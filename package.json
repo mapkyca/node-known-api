@@ -1,0 +1,11 @@
+{
+  "name": "Known API",
+  "version": "0.1",
+  "devDependencies": {},
+  "dependencies": {
+  },
+  
+  "baseurl": "http://withknown/",
+  "username": "mapkyca",
+  "apikey": ""
+}
