@@ -2,6 +2,8 @@
 
 const request = require('request');
 
+const crypto = require('crypto');
+
 
 module.exports = class API {
     
@@ -13,7 +15,7 @@ module.exports = class API {
 	
     }
     
-    call(callback, action, params, method = 'GET') {
+    call(callback, action, params = {}, method = 'GET') {
 	
 	var hmac = crypto.createHmac('sha256', this.apikey);
 	hmac.update(action);
@@ -25,7 +27,7 @@ module.exports = class API {
 	    form: params,
 	    headers: {
 		"X-KNOWN-USERNAME": this.username,
-		"X-KNOWN-SIGNATURE": hmac.digest('hex')
+		"X-KNOWN-SIGNATURE": hmac.digest('base64')
 	    }
 	};
 	
